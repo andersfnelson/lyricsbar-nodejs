@@ -26,19 +26,13 @@ Import database SQL file
 
 ### App Setup Instructions:
 
-Login to the server. Verify you are in your home directory: cd ~
+clone this repository in app server
 
-then... 
-
-cd lyricsbar
-
-npm init
+cd lyricsbar-nodejs
 
 sudo npm i express body-parser mysql dotenv ejs  --save
 
 sudo npm i -g nodemon
-
-clone this repository
 
 create a .env file in project root - add below to file and update with your db server info (copy from edit mode in github)
 
