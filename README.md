@@ -40,7 +40,7 @@ sudo npm i -g nodemon
 
 clone this repository
 
-create a .env file in project root - add below to file and update with your db server info
+create a .env file in project root - add below to file and update with your db server info (copy from edit mode in github)
 
 port = 3000
 host = '<DB-HOST>'
