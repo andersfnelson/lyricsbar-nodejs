@@ -1,0 +1,33 @@
+<%- include ('partials/header.ejs'); -%>
+
+<!-- SONG DISPLAY DIV -->
+<!-- file name and class name are flipped -->
+<div class="song-display">
+    <br /><br />
+    <div class="songheader">
+        <% if (song) { %>
+        <h2><%= song.title %></h2>
+        <h4><%= song.artist %></h4>
+        <h6><%= song.album %></h6>
+    </div>
+    <% if (!song.lyrics) {%>
+    <div class="lyrics">
+        <p>no lyrics listed</p>
+    </div>
+    <% } else { %>
+    <div class="lyrics">
+        <p>
+            <pre><%= song.lyrics %></pre>
+        </p>
+    </div>
+    <% } }%>
+
+    <!-- DELETE & UPDATE BUTTONS-->
+    <form action="/update/<%= song.id %>" method="GET">
+        <button type="submit" class="update">update</button>
+    </form>
+    <br />
+    <form action="/delete/<%= song.id %>" method="DELETE">
+        <button type="submit" class="delete">delete</button>
+    </form>
+</div>

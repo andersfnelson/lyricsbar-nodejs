@@ -1,0 +1,25 @@
+<%- include ('partials/header.ejs'); -%>
+<br><br><br>
+<h2>welcome back !</h2>
+<!-- SIGN IN DIV -->
+<div class="signin-form">
+    <h2>sign in</h2>
+    <form class="signin" method="POST" action="/profile">
+        <div class="inputBox">
+            <input type="text" name="username" id="username" required />
+            <label for="username">username</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="password" id="password" required />
+            <label for="password">password</label>
+        </div>
+        <div class="signin-btn">
+            <button type="submit">sign in!</button>
+        </div>
+    </form><br>
+    <div class="not-a-member">
+        <a href="/signUp">
+            <h6>not a member? sign up here</h6>
+        </a>
+    </div>
+</div>

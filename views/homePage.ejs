@@ -1,0 +1,39 @@
+<%- include ('partials/header.ejs'); -%>
+
+<% if (songs.length > 0) {%>
+<br /><br />
+<!-- SEARCH DIV -->
+<div class="search">
+    <br />
+    <form action="/" method="POST">
+        <label id="searchTitle" for="search">search by title</label><br />
+        <input type="text" name="search" id="search" class="search" /><br>
+        <button type="submit" class="searchButton">search</button>
+    </form>
+</div>
+<!-- SONG TABLE DIV -->
+<div class="home-page-table-div">
+    <table class="home-page-songs-table">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>artist</th>
+                <th>album</th>
+                <th>genre</th>
+                <th>year</th>
+            </tr>
+        </thead>
+        <% songs.forEach((song, index) => { %>
+        <tr data-href=" /displaySong/<%= song.id %>">
+            <td><%= song.title %></td>
+            <td><%= song.artist %></td>
+            <td><%= song.album %></td>
+            <td><%= song.genre %></td>
+            <td><%= song.year %></td>
+        </tr>
+        <% }) %>
+        <% } else { %>
+        <p>No songs found</p>
+        <% } %>
+    </table>
+</div>

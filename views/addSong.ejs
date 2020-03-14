@@ -1,0 +1,35 @@
+<%- include ('partials/header.ejs'); -%>
+
+<!-- ADD SONG DIV -->
+<div class="addsong-form">
+    <h2>add song</h2>
+    <form class="addsong" method="POST" action="addSong">
+        <div class="inputBox">
+            <input type="text" name="title" id="title" required />
+            <label for="title">title</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" name="artist" id="artist" required />
+            <label for="artist">artist</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" name="album" id="album" required />
+            <label for="album">album</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" name="genre" id="genre" required />
+            <label for="genre">genre</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" name="year" id="year" required />
+            <label for="year">year</label>
+        </div>
+        <div class="inputBox">
+            <textarea name="lyrics" id="lyrics" cols="30" rows="10" required></textarea>
+            <label for="lyrics">lyrics</label>
+        </div>
+        <div class="addsong-btn">
+            <button type="submit">add song</button>
+        </div>
+    </form>
+</div>

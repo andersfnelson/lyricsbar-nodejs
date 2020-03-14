@@ -1,0 +1,37 @@
+<%- include ('partials/header.ejs'); -%>
+<!-- UPDATE SONG DIV -->
+<div class="updatesong-form">
+    <% if (song) { %>
+    <h2>update <%= song.title %></h2>
+    <form method="POST" class="updatesong" action="/update/<%= song.id %>">
+        <div class="inputBox">
+            <input type="text" value="<%= song.title %>" name="title" id="title" required />
+            <label for="title">title</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" value="<%= song.artist %>" name="artist" id="artist" required />
+            <label for="artist">artist</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" value="<%= song.album %>" name="album" id="album" required />
+            <label for="album">album</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" value="<%= song.genre %>" name="genre" id="genre" required />
+            <label for="genre">genre</label>
+        </div>
+        <div class="inputBox">
+            <input type="text" value="<%= song.year %>" name="year" id="year" required />
+            <label for="year">year</label>
+        </div>
+        <div class="inputBox">
+            <textarea name="lyrics" id="lyrics" cols="30" rows="10" required>
+                <%= song.lyrics %></textarea>
+            <label for="lyrics">lyrics</label>
+        </div>
+        <div class="updatesong-btn">
+            <button type="submit">update <%= song.title %></button>
+        </div>
+    </form>
+    <% } %>
+</div>
