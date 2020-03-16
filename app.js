@@ -1,6 +1,5 @@
 // REQUIRMENTS
 const express = require('express'); // express web framwork
-const mysql = require('mysql'); // mysql database
 const bodyParser = require('body-parser'); // parsing html body
 require('dotenv').config(); // loading environment variables
 
@@ -17,69 +16,20 @@ app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
 
-// mysql db connection
-/* the mysql.createConnection function takes in a configuration
-    object which contains host, user, password and the database name. */
-/* ---------------------------------------------------------------------------- */
-const db = mysql.createConnection({
-    host: process.env.host,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.db
-});
-// connect to database
-db.connect((err) => { if (err) { throw err; } console.log('Connected to database'); });
-global.db = db;
+const database = require('./config/db'); // -> db.js
+database.apply(); //running db.js
 
-// home route & search
+// routes
 /* ---------------------------------------------------------------------------- */
-const { homePage, searchResults } = require('./routes/homePage'); // -> homePage.js
-app.get('/', homePage);
-app.post('/', searchResults)
-
-// add song route
-/* ---------------------------------------------------------------------------- */
-const { addSongPage, addSong } = require('./routes/addSong'); // -> addSong.js
-app.get('/addSong', addSongPage);
-app.post('/addSong', addSong);
-
-// display song route
-/* ---------------------------------------------------------------------------- */
-const { displaySong } = require('./routes/displaySong'); // -> displaySong.js
-app.get('/displaySong/:id', displaySong);
-
-// update song route
-/* ---------------------------------------------------------------------------- */
-const { updatePage, update } = require('./routes/update'); // -> update.js
-app.get('/update/:id', updatePage);
-app.post('/update/:id', update);
-
-// delete song route
-/* ---------------------------------------------------------------------------- */
-const { deleteSong } = require('./routes/delete'); // -> delete.js
-app.get('/delete/:id', deleteSong);
-
-// sign up route
-/* ---------------------------------------------------------------------------- */
-const { signUpPage, signUp } = require('./routes/signUp'); // -> signUp.js
-app.get('/signUp', signUpPage);
-app.post('/signUp', signUp);
-
-// sign in route
-/* ---------------------------------------------------------------------------- */
-const { signInPage } = require('./routes/signIn'); // -> signIn.js
-app.get('/signIn', signInPage);
-
-// profile route
-/* ---------------------------------------------------------------------------- */
-const { profile } = require('./routes/profile'); // -> profile.js
-app.post('/profile', profile);
-
-// about page route
-/* ---------------------------------------------------------------------------- */
-const { about } = require('./routes/about'); // -> about.js
-app.get('/about', about);
-
+require('./routes/homePage')(app); // -> homePage.js home & search
+require('./routes/addSong')(app); // -> addSong.js
+require('./routes/displaySong')(app); // -> displaySong.js
+require('./routes/update')(app); // -> update.js
+require('./routes/delete')(app); // -> delete.js
+require('./routes/signUp')(app); // -> signUp.js
+require('./routes/login')(app); // -> signIn.js
+require('./routes/profile')(app); // -> profile.js
+require('./routes/about')(app); // -> about.js
 
 // SERVER LISTEN FUNCTION
 /* ---------------------------------------------------------------------------- */

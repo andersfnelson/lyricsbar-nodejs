@@ -1,5 +1,5 @@
-module.exports = {
-    displaySong: (req, res) => {
+module.exports = function (app) {
+    app.get('/displaySong/:id', (req, res) => {
         // getting id from get params
         let songID = req.params.id;
         let query = `select * from song where id = ${songID}`;
@@ -12,5 +12,5 @@ module.exports = {
             });
             console.log(result);
         });
-    }
+    })
 }

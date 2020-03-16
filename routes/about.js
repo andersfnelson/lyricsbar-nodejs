@@ -1,5 +1,5 @@
-module.exports = {
-    about: (req, res) => {
+module.exports = function (app) {
+    app.get('/about', (req, res) => {
         res.render('about.ejs');
-    }
+    })
 }

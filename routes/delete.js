@@ -1,5 +1,5 @@
-module.exports = {
-    deleteSong: (req, res) => {
+module.exports = function (app) {
+    app.get('/delete/:id', (req, res) => {
         // id from get params
         let songID = req.params.id;
         let query = `delete from song where id = ${songID}`;
@@ -9,5 +9,5 @@ module.exports = {
             }
             res.redirect('/');
         })
-    }
+    })
 }
