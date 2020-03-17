@@ -58,7 +58,7 @@ npm run dev (for development)
 
 ### Project Directory Structure
 
-├── lyricsbar (main directory)
+    ├── lyricsbar (main directory)
     ├── config
         ├── db.js
         ├── passport.js
