@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    app.get('/update/:id', (req, res) => {
+    app.get('/update/:id', isLoggedIn, (req, res) => {
         // get id from get params
         let songID = req.params.id;
         let query = `select * from song where id = ${songID}`;
@@ -8,11 +8,12 @@ module.exports = function (app) {
                 return res.status(500).send(err);
             }
             res.render('update.ejs', {
-                song: result[0]
+                song: result[0],
+                user: req.user
             });
         })
     }),
-        app.post('/update/:id', (req, res) => {
+        app.post('/update/:id', isLoggedIn, (req, res) => {
             // get info from form
             let title = req.body.title
             let artist = req.body.artist
@@ -34,10 +35,21 @@ module.exports = function (app) {
                         return res.status(500).send(err2);
                     }
                     res.render('displaySong.ejs', {
-                        song: result2[0]
+                        song: result2[0],
+                        user: req.user
                     });
                 })
             }
             )
         })
+}
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+    // if user is auth in session
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    // if not go home
+    res.redirect('/');
 }

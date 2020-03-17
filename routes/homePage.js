@@ -1,5 +1,4 @@
 module.exports = function (app) {
-
     app.get('/', (req, res) => {
         let query = "select id, title, artist, album, genre, year from song"; // query database to get all the players
         // execute query
@@ -9,7 +8,8 @@ module.exports = function (app) {
             }
             // render homPage.ejs with var songs
             res.render('homePage.ejs', {
-                songs: result
+                songs: result,
+                user: req.user
             });
         });
     }),
@@ -23,7 +23,8 @@ module.exports = function (app) {
                 }
                 // render homepage with var
                 res.render('homePage.ejs', {
-                    songs: result
+                    songs: result,
+                    user: req.user
                 });
             });
         });

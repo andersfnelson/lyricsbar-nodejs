@@ -1,8 +1,10 @@
 module.exports = function (app) {
-    app.get('/addSong', (req, res) => {
-        res.render('addSong.ejs');
+    app.get('/addSong', isLoggedIn, (req, res) => {
+        res.render('addSong.ejs', {
+            user: req.user
+        });
     }),
-        app.post('/addSong', (req, res) => {
+        app.post('/addSong', isLoggedIn, (req, res) => {
             // get form data
             let title = req.body.title
             let artist = req.body.artist
@@ -19,4 +21,14 @@ module.exports = function (app) {
                 res.redirect('/');
             })
         });
+}
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+    // if user is auth in session
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    // if not go home
+    res.redirect('/');
 }

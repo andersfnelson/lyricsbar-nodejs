@@ -8,7 +8,8 @@ module.exports = function (app) {
                 return res.status(500).send(err);
             }
             res.render('displaySong.ejs', {
-                song: result[0]
+                song: result[0],
+                user: req.user
             });
             console.log(result);
         });

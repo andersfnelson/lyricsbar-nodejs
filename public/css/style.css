@@ -124,6 +124,12 @@ div.not-a-member {
 form.signup, form.signin {
   background: transparent;
 }
+div.flash-alert {
+  background: transparent;
+  color: rgb(240, 105, 105);
+  text-align: center;
+  margin-bottom: 15px;
+}
 div.signup-form, div.signin-form {
   position: absolute;
   top: 50%;

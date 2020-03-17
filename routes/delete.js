@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    app.get('/delete/:id', (req, res) => {
+    app.get('/delete/:id', isLoggedIn, (req, res) => {
         // id from get params
         let songID = req.params.id;
         let query = `delete from song where id = ${songID}`;
@@ -10,4 +10,14 @@ module.exports = function (app) {
             res.redirect('/');
         })
     })
+}
+
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+    // if user is auth in session
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    // if not go home
+    res.redirect('/');
 }

@@ -4,14 +4,14 @@
 <!-- SIGN UP DIV -->
 <div class="signup-form">
     <h2>sign up</h2>
-    <form class="signup" method="POST" action="/signUp">
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+    <div class="flash-alert"><%= message %></div>
+    <% } %>
+    <form class="signup" method="POST">
         <div class="inputBox">
             <input type="text" name="username" id="username" required />
             <label for="username">username</label>
-        </div>
-        <div class="inputBox">
-            <input type="email" name="email" id="email" />
-            <label for="password-confirm">email</label>
         </div>
         <div class="inputBox">
             <input type="password" name="password" id="password" required />
