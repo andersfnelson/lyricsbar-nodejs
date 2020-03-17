@@ -58,47 +58,47 @@ npm run dev (for development)
 
 ### Project Directory Structure
 
-    ├── lyricsbar (main directory)
-    ├── config
-        ├── db.js
-        ├── passport.js
-    ├── bd stuff
-        ├── .sql files
-    ├── node_modules
-    ├── public
-        ├── css
-            ├── style.css
-        ├── imgs
-            ├── icon.ico
-        ├── js
-            ├── rowclick.js
-    ├── routes
-        ├── about.js
-        ├── addSong.js
-        ├── delete.js
-        ├── displaySong.js
-        ├── homePage.js
-        ├── login.js
-        ├── logout.js
-        ├── profile.js
-        ├── signUp.js
-        ├── update.js
-    ├── views
-        ├── partials 
-            ├── header.ejs
-        ├── about.ejs
-        ├── addSong.ejs
-        ├── displaySong.ejs
-        ├── homePage.ejs
-        ├── login.js
-        ├── profile.ejs
-        ├── signUp.ejs
-        ├── update.ejs
-    ├── .env
-    ├── .gitignore
-    ├── app.js
-    ├── package.json
-    ├── README.md
+    ├── lyricsbar-nodejs (main directory)
+        ├── config
+            ├── db.js
+            ├── passport.js
+        ├── bd stuff
+            ├── .sql files
+        ├── node_modules
+        ├── public
+            ├── css
+                ├── style.css
+            ├── imgs
+                ├── icon.ico
+            ├── js
+                ├── rowclick.js
+        ├── routes
+            ├── about.js
+            ├── addSong.js
+            ├── delete.js
+            ├── displaySong.js
+            ├── homePage.js
+            ├── login.js
+            ├── logout.js
+            ├── profile.js
+            ├── signUp.js
+            ├── update.js
+        ├── views
+            ├── partials 
+                ├── header.ejs
+            ├── about.ejs
+            ├── addSong.ejs
+            ├── displaySong.ejs
+            ├── homePage.ejs
+            ├── login.js
+            ├── profile.ejs
+            ├── signUp.ejs
+            ├── update.ejs
+        ├── .env
+        ├── .gitignore
+        ├── app.js
+        ├── package.json
+        ├── README.md
 
 ### known bugs
 
