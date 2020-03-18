@@ -20,9 +20,13 @@
             <pre><%= song.lyrics %></pre>
         </p>
     </div>
-    <% } }%>
-
+    <% } } %>
     <!-- DELETE & UPDATE BUTTONS-->
+    <% if (user) { %>
+    <form action="/displaySong/<%= song.id %>" method="Post">
+        <button type="submit" class="like-song">like</button>
+    </form>
+    <br>
     <form action="/update/<%= song.id %>" method="GET">
         <button type="submit" class="update">update</button>
     </form>
@@ -30,4 +34,5 @@
     <form action="/delete/<%= song.id %>" method="DELETE">
         <button type="submit" class="delete">delete</button>
     </form>
+    <% } %>
 </div>

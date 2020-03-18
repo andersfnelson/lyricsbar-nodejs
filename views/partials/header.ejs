@@ -20,11 +20,20 @@
             <nav>
                 <ul class="nav-links">
                     <li><a href="/">home</a></li>
+                    <% if (user) { %>
                     <li><a href="/addSong">add song</a></li>
+                    <% } %>
                     <li><a href="/about">about</a></li>
                 </ul>
             </nav>
+
+            <% if (user) { %>
+            <a href="/profile" class="profile"><button>profile</button></a>
+            <a href="/logout" class="logout"><button>logout</button></a>
+            <% } else { %>
             <a href="/signUp" class="signup"><button>sign up</button></a>
+            <a href="/login" class="login"><button>login</button></a>
+            <% } %>
         </header>
     </div>
 </body>
