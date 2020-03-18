@@ -9,7 +9,6 @@ const morgan = require('morgan'); // logger
 
 const flash = require('connect-flash');
 require('dotenv').config(); // loading environment variables
-// const db_users = require('./models/user');
 
 const db_songs = require('./config/db'); // -> db.js
 db_songs.apply(); //running db.js
@@ -51,8 +50,6 @@ require('./routes/logout')(app, passport); // -> logout.js
 
 // SERVER LISTEN FUNCTION
 /* ---------------------------------------------------------------------------- */
-//db_users.sync().then(() => {
 app.listen(port, () => {
     console.log(`server listening at https://<IP>:${port}`);
 });
-//});

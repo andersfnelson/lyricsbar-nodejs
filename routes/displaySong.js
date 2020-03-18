@@ -13,5 +13,9 @@ module.exports = function (app) {
             });
             console.log(result);
         });
+    });
+    app.post('/displaySong/:id', (res, req) => {
+        console.log(req.params.id);
+        redirect('/profile');
     })
 }

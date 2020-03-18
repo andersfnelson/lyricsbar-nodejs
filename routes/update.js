@@ -50,6 +50,6 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    // if not go home
-    res.redirect('/');
+    // if not go to login
+    res.redirect('/login');
 }
