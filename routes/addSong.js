@@ -12,8 +12,10 @@ module.exports = function (app) {
             let genre = req.body.genre
             let year = req.body.year
             let lyrics = req.body.lyrics
-
-            let query = `insert into song (title, artist, album, genre, year, lyrics) values ('${title}', '${artist}', '${album}', '${genre}', '${year}', '${lyrics}')`;
+            let user_id = req.user.user_id
+            console.log(lyrics);
+            console.log(user_id);
+            let query = `insert into song_table (user_id, title, artist, album, genre, year, lyrics) values ('${user_id}', '${title}', '${artist}', '${album}', '${genre}', '${year}', '${lyrics}')`;
             db.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).send(err);
