@@ -1,10 +1,20 @@
 module.exports = function (app, passport) {
     // this page protected
     app.get('/profile', isLoggedIn, (req, res) => {
-        res.render('profile.ejs', {
-            user: req.user // user from session
+        user_id = req.user.user_id;
+        let userSongsQ = `select * from song_table where user_id = '${user_id}'`;
+        db.query(userSongsQ, (err, result) => {
+            if (err) { return res.status(500).send(err); }
+
+
+            console.log(result);
+            res.render('profile.ejs', {
+                user: req.user, // user from session
+                songs: result
+            });
+            console.log(req.user);
+
         });
-        console.log(req.user);
     });
 }
 
