@@ -3,7 +3,7 @@
 <h2 class="username"><%= user.username %></h2>
 <% } %>
 <br><br>
-<h3>fav songs</h3>
+<h3>your songs</h3>
 <br>
 <div>
     <table class="user-song-table">
@@ -16,12 +16,18 @@
                 <th>year</th>
             </tr>
         </thead>
-        <tr data-href="#">
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
-            <td>test</td>
+        <% if (songs) { %>
+        <% songs.forEach((song, index) => { %>
+        <tr data-href=" /displaySong/<%= song.song_id %>">
+            <td><%= song.title %></td>
+            <td><%= song.artist %></td>
+            <td><%= song.album %></td>
+            <td><%= song.genre %></td>
+            <td><%= song.year %></td>
         </tr>
+        <% }); %>
+        <% } else { %>
+        <p>No songs found</p>
+        <% } %>
     </table>
 </div>

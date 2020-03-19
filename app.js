@@ -47,6 +47,8 @@ require('./routes/login')(app, passport); // -> signIn.js
 require('./routes/profile')(app, passport); // -> profile.js
 require('./routes/about')(app, passport); // -> about.js
 require('./routes/logout')(app, passport); // -> logout.js
+require('./routes/likeSong')(app, passport); // -> likeSong.js
+require('./routes/comment')(app) // -> comment.js
 
 // SERVER LISTEN FUNCTION
 /* ---------------------------------------------------------------------------- */

@@ -3,7 +3,7 @@
 <div class="updatesong-form">
     <% if (song) { %>
     <h2>update <%= song.title %></h2>
-    <form method="POST" class="updatesong" action="/update/<%= song.id %>">
+    <form method="POST" class="updatesong" action="/update/<%= song.song_id %>">
         <div class="inputBox">
             <input type="text" value="<%= song.title %>" name="title" id="title" required />
             <label for="title">title</label>

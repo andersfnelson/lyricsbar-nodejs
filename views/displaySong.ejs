@@ -10,7 +10,7 @@
         <h4><%= song.artist %></h4>
         <h6><%= song.album %></h6>
     </div>
-    <% if (!song.lyrics) {%>
+    <% if (!song.lyrics) { %>
     <div class="lyrics">
         <p>no lyrics listed</p>
     </div>
@@ -20,19 +20,50 @@
             <pre><%= song.lyrics %></pre>
         </p>
     </div>
-    <% } } %>
-    <!-- DELETE & UPDATE BUTTONS-->
+    <% } %>
+
     <% if (user) { %>
-    <form action="/displaySong/<%= song.id %>" method="Post">
-        <button type="submit" class="like-song">like</button>
-    </form>
+    <!-- like song
+    <a id="like-song" href="/likeSong/<%= song.song_id %>" class="like-song">like</a>
+    -->
+    <!-- DELETE & UPDATE BUTTONS-->
     <br>
-    <form action="/update/<%= song.id %>" method="GET">
+    <form action="/update/<%= song.song_id %>" method="GET">
         <button type="submit" class="update">update</button>
     </form>
     <br />
-    <form action="/delete/<%= song.id %>" method="DELETE">
-        <button type="submit" class="delete">delete</button>
+    <form action="/delete/<%= song.song_id %>" method="DELETE">
+        <button type="submit" class="delete">delete <%= song.title %></button>
     </form>
+    <div class="comment-input-div">
+        <form action="/comment/<%= song.song_id %>" class="comment" method="POST">
+            <div class="inputBox">
+                <input type="text" name="comment" id="comment" required>
+                <label for="comment">comment</label>
+            </div>
+            <div class="comment-btn">
+                <button type="submit">comment</button>
+            </div>
+        </form>
+    </div>
+    <% }  %>
+    <% if (comments) { %>
+    <div class="comment-table-div">
+        <table class="comment-table">
+            <thead>
+                <th>user</th>
+                <th>comment</th>
+            </thead>
+            <tbody>
+                <% comments.forEach((comment, index) => { %>
+                <tr>
+                    <td><%= comment.user_id %></td>
+                    <td><%= comment.comment %></td>
+                </tr>
+                <% });} %>
+            </tbody>
+        </table>
+    </div>
+
     <% } %>
 </div>
