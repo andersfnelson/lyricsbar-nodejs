@@ -26,7 +26,7 @@ module.exports = function (passport) {
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, username, password, done) {
-            db.query("select * from Users where username = ?", [username], function (err, rows) {
+            db.query("select * from user_table where username = ?", [username], function (err, rows) {
                 if (err) {
                     console.log('error in passport local signup');
                     return done(err);
@@ -39,7 +39,7 @@ module.exports = function (passport) {
                         username: username,
                         password: bcrypt.hashSync(password, null, null)
                     };
-                    let insertquery = "insert into Users (username, password) values (?,?)";
+                    let insertquery = "insert into user_table (username, password) values (?,?)";
                     db.query(insertquery, [newUser.username, newUser.password], function (err, rows) {
                         newUser.id = rows.InsertId;
                         return done(null, newUser);
@@ -56,7 +56,7 @@ module.exports = function (passport) {
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
         function (req, username, password, done) {
-            db.query("select * from Users where username = ?", [username], function (err, rows) {
+            db.query("select * from user_table where username = ?", [username], function (err, rows) {
                 if (err) {
                     console.log('error in passport local login');
                     return done(err);
